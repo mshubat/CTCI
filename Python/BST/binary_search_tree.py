@@ -56,6 +56,24 @@ class binary_search_tree:
                 root.right = node(False, value)
 
     @staticmethod
+    def height(root):
+        '''
+        Calculates and returns the height of a given tree.
+        '''
+        leftHeight, rightHeight = 0, 0
+
+        if root.left:
+            leftHeight = binary_search_tree.height(root.left) + 1
+        if root.right:
+            rightHeight = binary_search_tree.height(root.right) + 1
+
+        return leftHeight if leftHeight > rightHeight else rightHeight
+
+    '''
+    ---------- Traversals ----------
+    '''
+
+    @staticmethod
     def inOrder(node):
         '''
         Traverse the tree in order, print out the value
@@ -68,6 +86,7 @@ class binary_search_tree:
         if node.getRight():
             binary_search_tree.inOrder(node.getRight())
 
+    @staticmethod
     def preOrder(node):
         '''
         Traverse the tree by first visiting the given node
@@ -80,6 +99,7 @@ class binary_search_tree:
         if node.getRight():
             binary_search_tree.preOrder(node.getRight())
 
+    @staticmethod
     def postOrder(node):
         '''
         Traverse the tree by traversing the nodes left
@@ -107,8 +127,9 @@ if __name__ == "__main__":
     print('----------------')
     print('Traversals')
     print('----------------')
+    
     print("inOrder()")
-    binary_search_tree.inOrder(bst.root)
+    bst.inOrder(bst.root)
     print("preOrder()")
     binary_search_tree.preOrder(bst.root)
     print("postOrder()")
@@ -122,6 +143,7 @@ if __name__ == "__main__":
     binary_search_tree.insert_recursively(bst2.root, 8)
     binary_search_tree.insert_recursively(bst2.root, 1)
     binary_search_tree.insert_recursively(bst2.root, 6)
+
     print('----------------')
     print('Traversals')
     print('----------------')
@@ -131,3 +153,5 @@ if __name__ == "__main__":
     binary_search_tree.preOrder(bst2.root)
     print("postOrder()")
     binary_search_tree.postOrder(bst2.root)
+
+    print(f'Height of Tree: {bst.height(bst.root)}')
