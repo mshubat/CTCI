@@ -21,10 +21,12 @@ Space Complexity: O(n+k)
 
 def countingSort(nums):
     counts = [0]*(max(nums)+1)
-    
+
+    # Count occurences of elements in the array
     for i in nums:
         counts[i] += 1
 
+    # Get cumulative count of elements
     for i in range(len(counts)-1):
         counts[i+1] += counts[i]
 
@@ -35,6 +37,7 @@ def countingSort(nums):
 
     return sorted_nums
 
+
 # Test Cases
 if __name__ == "__main__":
     print("Counting Sort Tests")
@@ -43,5 +46,5 @@ if __name__ == "__main__":
     result = countingSort([4, 3, 10, 2, 3, 4, 5, 8, 7])
     print(result)
 
-    result = countingSort([9,8,7,6,10,5,4,3,2,1,0])
+    result = countingSort([9, 8, 7, 6, 10, 5, 4, 3, 2, 1, 0])
     print(result)
