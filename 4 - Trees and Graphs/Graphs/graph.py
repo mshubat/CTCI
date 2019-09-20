@@ -66,10 +66,10 @@ def doesPathExistBFS(start, end):
     return False
         
 
-        
+def createFirstGraph():
+    g = Graph(8)
 
-
-if __name__ == "__main__":
+    # create nodes
     n1 = Node("a")
     n2 = Node("b")
     n3 = Node("c")
@@ -79,31 +79,42 @@ if __name__ == "__main__":
     n7 = Node("g")
     n8 = Node("h")
 
+    # Create connections
+    # n1
     n1.addAdjacent(n2)
-
+    # n2
     n2.addAdjacent(n1)
     n2.addAdjacent(n3)
     n2.addAdjacent(n4)
-
+    # n3
     n3.addAdjacent(n2)
-
+    # n4
     n4.addAdjacent(n2)
     n4.addAdjacent(n5)
-
+    # n5
     n5.addAdjacent(n4)
     n5.addAdjacent(n6)
     n5.addAdjacent(n7)
-
+    # n6
     n6.addAdjacent(n5)
-
+    # n7
     n7.addAdjacent(n5)
     n7.addAdjacent(n8)
-
+    # n8
     n8.addAdjacent(n7)
 
     nodes = [n1, n2, n3, n4, n5, n6, n7, n8]
+    for n in nodes:
+        g.addNode(n)
 
-    result = doesPathExistBFS(n1, n8)
+    return g
+
+if __name__ == "__main__":
+
+    g = createFirstGraph()
+    n3 = g.getNodes()[2]
+    n6 = g.getNodes()[5]
+    result = doesPathExistBFS(n3, n6)
 
     if result:
         print("Path Exists!")
