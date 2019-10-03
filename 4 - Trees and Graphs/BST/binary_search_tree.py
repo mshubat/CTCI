@@ -1,4 +1,4 @@
-from node import node
+from BST.node import node
 
 
 class binary_search_tree:
@@ -32,11 +32,18 @@ class binary_search_tree:
             else:
                 print(f'Failure: {value} is already present in the tree.')
                 return
-
             current = next
+        
         print(f'Success: {value} has been inserted in the tree.')
         self.count += 1
 
+    def insert(self, value):
+        '''
+        Wrapper for insert_recursively()
+        '''
+        binary_search_tree.insert_recursively(self.root, value)
+
+    @staticmethod
     def insert_recursively(root, value):
         '''
         Recursive approach: node insertion in bst
@@ -82,7 +89,7 @@ class binary_search_tree:
 
         if node.getLeft():
             binary_search_tree.inOrder(node.getLeft())
-        print(node.getValue())
+        print(node.getValue(), end=" ")
         if node.getRight():
             binary_search_tree.inOrder(node.getRight())
 
@@ -92,7 +99,7 @@ class binary_search_tree:
         Traverse the tree by first visiting the given node
         followed by its left, then right subtrees.
         '''
-        print(node.getValue())
+        print(node.getValue(), end=" ")
 
         if node.getLeft():
             binary_search_tree.preOrder(node.getLeft())
@@ -111,7 +118,7 @@ class binary_search_tree:
         if node.getRight():
             binary_search_tree.postOrder(node.getRight())
 
-        print(node.getValue())
+        print(node.getValue(), end=" ")
 
 
 if __name__ == "__main__":
@@ -130,28 +137,31 @@ if __name__ == "__main__":
     
     print("inOrder()")
     bst.inOrder(bst.root)
-    print("preOrder()")
+    print("\npreOrder()")
     binary_search_tree.preOrder(bst.root)
-    print("postOrder()")
+    print("\npostOrder()")
     binary_search_tree.postOrder(bst.root)
+    print()
 
     print('Create Tree with Recursive method')
     bst2 = binary_search_tree(5)
-    binary_search_tree.insert_recursively(bst2.root, 3)
-    binary_search_tree.insert_recursively(bst2.root, 7)
-    binary_search_tree.insert_recursively(bst2.root, 7)
-    binary_search_tree.insert_recursively(bst2.root, 8)
-    binary_search_tree.insert_recursively(bst2.root, 1)
-    binary_search_tree.insert_recursively(bst2.root, 6)
+    bst2.insert(3)
+    bst2.insert(7)
+    bst2.insert(7)
+    bst2.insert(8)
+    bst2.insert(1)
+    bst2.insert(6)
 
     print('----------------')
     print('Traversals')
     print('----------------')
     print("inOrder()")
     binary_search_tree.inOrder(bst2.root)
-    print("preOrder()")
+    print("\npreOrder()")
     binary_search_tree.preOrder(bst2.root)
-    print("postOrder()")
+    print("\npostOrder()")
     binary_search_tree.postOrder(bst2.root)
+    print()
 
-    print(f'Height of Tree: {bst.height(bst.root)}')
+    print(f'Height 1st Tree: {bst.height(bst.root)}')
+    print(f'Height 2nd Tree: {bst2.height(bst.root)}')
