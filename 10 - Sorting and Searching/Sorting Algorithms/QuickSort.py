@@ -29,19 +29,19 @@ def quickSort(array, start, end):
 def partition(array, start, end):
     pivot = end
 
-    i = -1
+    i = 0
     j = 0
 
     while j != pivot:
         if array[j] <= array[pivot]:
-            i += 1
             swap(array, i, j)
+            i += 1
 
         j += 1
 
-    swap(array, i+1, j)
+    swap(array, i, j)
 
-    return i+1
+    return i
 
 
 if __name__ == "__main__":
@@ -49,3 +49,7 @@ if __name__ == "__main__":
     # return 1,2,3,4 or 1,2,4,3
     quickSort(test, 0, len(test)-1)
     print(test)
+
+    test2 = [5,4,3,2,1,-1,-2,2,3,4,5]
+    quickSort(test2, 0, len(test2)-1)
+    print(test2)
