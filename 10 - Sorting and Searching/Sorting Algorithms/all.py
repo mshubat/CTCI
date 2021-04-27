@@ -45,6 +45,19 @@ def insertion_sort(nums):
     i += 1
   return nums
 
+# Quick Sort
+def quick_sort(nums):
+  pass
+
+
+# Merge Sort
+def merge_sort(nums):
+  pass
+
+# Counting Sort
+def counting_sort(nums):
+  pass
+
 
 # Tests
 if __name__ == "__main__":
@@ -68,18 +81,18 @@ if __name__ == "__main__":
 
   # Test 2
   try: 
-    # assert(bubble_sort(test2.copy()) == sorted(test2.copy()))
+    assert(bubble_sort(test2.copy()) == sorted(test2.copy()))
     assert(selection_sort(test2.copy()) == sorted(test2.copy()))
-    # assert(insertion_sort(test2.copy()) == sorted(test2.copy()))
+    assert(insertion_sort(test2.copy()) == sorted(test2.copy()))
     print("test 2 passed")
   except:
     print("test 2 failed")
 
   # Test 3
   try: 
-    # assert(bubble_sort(test3.copy()) == sorted(test3.copy()))
+    assert(bubble_sort(test3.copy()) == sorted(test3.copy()))
     assert(selection_sort(test3.copy()) == sorted(test3.copy()))
-    # assert(insertion_sort(test3.copy()) == sorted(test3.copy()))
+    assert(insertion_sort(test3.copy()) == sorted(test3.copy()))
     print("test 3 passed")
   except:
     print("test 3 failed")
