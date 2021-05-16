@@ -52,7 +52,36 @@ def quick_sort(nums):
 
 # Merge Sort
 def merge_sort(nums):
-  pass
+
+  if len(nums) > 1:
+    mid = len(nums)//2
+    left = nums[0:mid]
+    right = nums[mid:]
+    return combine(merge_sort(left), merge_sort(right))
+  else:
+    return nums
+
+  
+def combine(left, right):
+  li = 0
+  ri = 0
+  combined = []
+
+  while(li < len(left) and ri < len(right)):
+
+    if (left[li] < right[ri]):
+      combined.append(left[li])
+      li += 1
+    else:
+      combined.append(right[ri])
+      ri += 1
+  
+  if (li < len(left)):
+    combined.extend(left[li:])
+  elif (ri < len(right)):
+    combined.extend(right[ri:])
+
+  return combined
 
 # Counting Sort
 def counting_sort(nums):
@@ -75,6 +104,7 @@ if __name__ == "__main__":
     assert(bubble_sort(test1.copy()) == sorted(test1.copy()))
     assert(selection_sort(test1.copy()) == sorted(test1.copy()))
     assert(insertion_sort(test1.copy()) == sorted(test1.copy()))
+    assert(merge_sort(test1.copy()) == sorted(test1.copy()))
     print("test 1 passed")
   except:
     print("test 1 failed")
@@ -84,6 +114,7 @@ if __name__ == "__main__":
     assert(bubble_sort(test2.copy()) == sorted(test2.copy()))
     assert(selection_sort(test2.copy()) == sorted(test2.copy()))
     assert(insertion_sort(test2.copy()) == sorted(test2.copy()))
+    assert(merge_sort(test2.copy()) == sorted(test2.copy()))
     print("test 2 passed")
   except:
     print("test 2 failed")
@@ -93,6 +124,7 @@ if __name__ == "__main__":
     assert(bubble_sort(test3.copy()) == sorted(test3.copy()))
     assert(selection_sort(test3.copy()) == sorted(test3.copy()))
     assert(insertion_sort(test3.copy()) == sorted(test3.copy()))
+    assert(merge_sort(test3.copy()) == sorted(test3.copy()))
     print("test 3 passed")
   except:
     print("test 3 failed")
@@ -102,6 +134,7 @@ if __name__ == "__main__":
     assert(bubble_sort(test4.copy()) == sorted(test4.copy()))
     assert(selection_sort(test4.copy()) == sorted(test4.copy()))
     assert(insertion_sort(test4.copy()) == sorted(test4.copy()))
+    assert(merge_sort(test4.copy()) == sorted(test4.copy()))
     print("test 4 passed")
   except:
     print("test 4 failed")
@@ -111,6 +144,7 @@ if __name__ == "__main__":
     assert(bubble_sort(test5.copy()) == sorted(test5.copy()))
     assert(selection_sort(test5.copy()) == sorted(test5.copy()))
     assert(insertion_sort(test5.copy()) == sorted(test5.copy()))
+    assert(merge_sort(test5.copy()) == sorted(test5.copy()))
     print("test 5 passed")
   except:
     print("test 5 failed")
