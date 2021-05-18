@@ -11,23 +11,22 @@ Space Complexity: O(nlogn) * since the recusive calls must
 '''
 
 
-def swap(arr, i1, i2):
-    temp = arr[i1]
-    arr[i1] = arr[i2]
-    arr[i2] = temp
+def swap(arr, i, j):
+    temp = arr[i]
+    arr[i] = arr[j]
+    arr[j] = temp
 
 
-def quickSort(array, start, end):
+def quickSort(array):
+    if len(array) > 1:
+        pi = partition(array)
+        return quickSort(array[0:pi]) + [array[pi]] + quickSort(array[pi+1:])
+    else:
+      return array
 
-    if start < end:
-        pi = partition(array, start, end)
 
-        quickSort(array, pi+1, end)
-        quickSort(array, start, pi-1)
-
-
-def partition(array, start, end):
-    pivot = end
+def partition(array):
+    pivot = len(array) - 1
 
     i = 0
     j = 0
@@ -47,9 +46,9 @@ def partition(array, start, end):
 if __name__ == "__main__":
     test = [999, 11, 22, 1, 3, 4, 2, 6, 55, 65, 22, 23, 1, 7, 33, 34, 222, -11]
     # return 1,2,3,4 or 1,2,4,3
-    quickSort(test, 0, len(test)-1)
-    print(test)
+    sorted = quickSort(test)
+    print(sorted)
 
     test2 = [5,4,3,2,1,-1,-2,2,3,4,5]
-    quickSort(test2, 0, len(test2)-1)
-    print(test2)
+    sorted = quickSort(test2)
+    print(sorted)
